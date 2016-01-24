@@ -1,0 +1,19 @@
+<h1>輸入經緯度</h1>
+
+
+<form action="{% url 'get_data:index' %}" method="POST">
+{% csrf_token %}
+<label>longitude:</label><input type="text" name="longitude"><br>
+<label>latitude:</label><input type="text" name="latitude"><br>
+<input type="submit" value="submit">
+</form>
+
+{% if Data %}
+<h3>日期,區,里,路,緯度,經度,距離</h3>
+<ul>
+{% for data in Data%}
+	<li>{{data.date}},{{data.zone1}},{{data.zone2}},{{data.road}},{{data.longitude}},{{data.latitude}},{{data.length}}</li>
+{% endfor %}
+</ul>
+{% endif %}
+
